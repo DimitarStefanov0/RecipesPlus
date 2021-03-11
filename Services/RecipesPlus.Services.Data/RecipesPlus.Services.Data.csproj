@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\RecipesPlus.Data.Common\RecipesPlus.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\RecipesPlus.Data.Models\RecipesPlus.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\RecipesPlus.Web.ViewModels\RecipesPlus.Web.ViewModels.csproj" />
     <ProjectReference Include="..\RecipesPlus.Services.Mapping\RecipesPlus.Services.Mapping.csproj" />
   </ItemGroup>
 
