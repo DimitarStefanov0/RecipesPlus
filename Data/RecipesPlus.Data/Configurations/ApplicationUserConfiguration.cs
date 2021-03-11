@@ -1,8 +1,8 @@
 ﻿namespace RecipesPlus.Data.Configurations
 {
-    using RecipesPlus.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using RecipesPlus.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

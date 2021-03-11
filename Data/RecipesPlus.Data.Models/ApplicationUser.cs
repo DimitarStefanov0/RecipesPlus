@@ -4,9 +4,8 @@ namespace RecipesPlus.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using RecipesPlus.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using RecipesPlus.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,6 +15,8 @@ namespace RecipesPlus.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Recipes = new HashSet<Recipe>();
+            this.Images = new HashSet<Image>();
         }
 
         // Audit info
@@ -33,5 +34,9 @@ namespace RecipesPlus.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Recipe> Recipes { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

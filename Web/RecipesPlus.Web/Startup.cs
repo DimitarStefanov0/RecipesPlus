@@ -2,17 +2,6 @@
 {
     using System.Reflection;
 
-    using RecipesPlus.Data;
-    using RecipesPlus.Data.Common;
-    using RecipesPlus.Data.Common.Repositories;
-    using RecipesPlus.Data.Models;
-    using RecipesPlus.Data.Repositories;
-    using RecipesPlus.Data.Seeding;
-    using RecipesPlus.Services.Data;
-    using RecipesPlus.Services.Mapping;
-    using RecipesPlus.Services.Messaging;
-    using RecipesPlus.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -21,6 +10,15 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using RecipesPlus.Data;
+    using RecipesPlus.Data.Common;
+    using RecipesPlus.Data.Common.Repositories;
+    using RecipesPlus.Data.Models;
+    using RecipesPlus.Data.Repositories;
+    using RecipesPlus.Data.Seeding;
+    using RecipesPlus.Services.Mapping;
+    using RecipesPlus.Services.Messaging;
+    using RecipesPlus.Web.ViewModels;
 
     public class Startup
     {
@@ -64,7 +62,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
