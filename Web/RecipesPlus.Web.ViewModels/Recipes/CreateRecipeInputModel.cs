@@ -27,8 +27,9 @@
 
         public int CategoryId { get; set; }
 
-        public IEnumerable<RecipeIngredientInputModel> Ingredients { get; set; }
-
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
+
+        [Required(ErrorMessage = "Ingredients are required")]
+        public IEnumerable<RecipeIngredientInputModel> Ingredients { get; set; }
     }
 }

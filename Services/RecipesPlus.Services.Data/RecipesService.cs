@@ -1,11 +1,13 @@
 ﻿namespace RecipesPlus.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     using RecipesPlus.Data.Common.Repositories;
     using RecipesPlus.Data.Models;
+    using RecipesPlus.Services.Mapping;
     using RecipesPlus.Web.ViewModels.Recipes;
 
     public class RecipesService : IRecipesService
@@ -19,7 +21,7 @@
             this.ingredientsRepository = ingredientsRepository;
         }
 
-        public async Task CreateAsync(CreateRecipeInputModel input)
+        public async Task CreateAsync(CreateRecipeInputModel input, string userId)
         {
             var recipe = new Recipe
             {
@@ -29,6 +31,7 @@
                 CookingTime = TimeSpan.FromMinutes(input.CookingTime),
                 CategoryId = input.CategoryId,
                 PortionCount = input.PortionCount,
+                AddedByUserId = userId,
             };
 
             foreach (var inputIngredient in input.Ingredients)
@@ -54,6 +57,17 @@
 
             await this.recipesRepository.AddAsync(recipe);
             await this.recipesRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12)
+        {
+            return this.recipesRepository
+                .AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<T>()
+                .ToList();
         }
     }
 }

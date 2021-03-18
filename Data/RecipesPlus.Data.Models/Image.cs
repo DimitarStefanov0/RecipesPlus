@@ -1,8 +1,6 @@
 ﻿namespace RecipesPlus.Data.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     using RecipesPlus.Data.Common.Models;
 
@@ -14,6 +12,8 @@
         }
 
         public string Extension { get; set; }
+
+        public string RemoteImageUrl { get; set; }
 
         public int RecipeId { get; set; }
 

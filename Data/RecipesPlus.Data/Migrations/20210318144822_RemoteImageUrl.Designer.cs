@@ -10,8 +10,8 @@ using RecipesPlus.Data;
 namespace RecipesPlus.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210311144101_RemoveSettings")]
-    partial class RemoveSettings
+    [Migration("20210318144822_RemoteImageUrl")]
+    partial class RemoteImageUrl
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -299,6 +299,9 @@ namespace RecipesPlus.Data.Migrations
 
                     b.Property<int>("RecipeId")
                         .HasColumnType("int");
+
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
