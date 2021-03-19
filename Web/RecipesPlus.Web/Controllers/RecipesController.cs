@@ -43,13 +43,21 @@
             return this.Redirect("/");
         }
 
-        public IActionResult All(int id)
+        public IActionResult All(int id = 1)
         {
+            const int itemsPerPage = 12;
             var viewModel = new RecipesListViewModel
             {
+                ItemsPerPage = itemsPerPage,
                 PageNumber = id,
-                Recipes = this.recipesService.GetAll<RecipeInListViewModel>(id, 12),
+                Recipes = this.recipesService.GetAll<RecipeInListViewModel>(id, itemsPerPage),
+                RecipesCount = this.recipesService.GetCount(),
             };
+
+            if (id <= 0 || id > viewModel.PagesCount)
+            {
+                return this.NotFound();
+            }
 
             return this.View(viewModel);
         }

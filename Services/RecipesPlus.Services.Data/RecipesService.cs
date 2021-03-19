@@ -69,5 +69,10 @@
                 .To<T>()
                 .ToList();
         }
+
+        public int GetCount()
+        {
+            return this.recipesRepository.AllAsNoTracking().Count();
+        }
     }
 }
