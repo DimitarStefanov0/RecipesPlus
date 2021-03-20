@@ -12,10 +12,10 @@
     @foreach (var recipe in this.Model.Recipes)
     {
         <div class="media col-md-4">
-            <img src=@recipe.ImageUrl class="mr-3" alt="...">
+            <img src="@recipe.ImageUrl" width="100" class="mr-3 img-responsive">
             <div class="media-body">
-                <h5 class="mt-0">@recipe.Name</h5>
-                <p>@recipe.CategoryName</p>
+                <h5 class="mt-0"><a asp-action="ById" asp-route-id="@recipe.Id">@recipe.Name</a></h5>
+                @recipe.CategoryName
             </div>
         </div>
     }
