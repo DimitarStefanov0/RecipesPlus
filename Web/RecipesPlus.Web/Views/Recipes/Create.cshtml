@@ -44,7 +44,7 @@
     </div>
     <div class="form-group" id="IngredientsContainer">
         <label asp-for="Ingredients"></label>
-        <a class="btn btn-secondary" onclick="AddMoreIngredients()">+</a>
+        <a class="btn btn-secondary" onclick="AddMoreIngredients()"><i class="fas fa-plus-circle"></i></a>
     </div>
     <input type="submit" class="btn btn-primary" />
 </form>
@@ -53,7 +53,7 @@
     <script>
             var ingredientIndex = 0;
         function AddMoreIngredients() {
-            $("#IngredientsContainer").append("<div class='form-group'>Name: <input type='text' name='Ingredients[" + ingredientIndex + "].IngredientName' /> Quantity: <input type='text' name='Ingredients[" + ingredientIndex +"].Quantity' /></div>");
+            $("#IngredientsContainer").append("<div class='row form-group'><div class='col-sm'>Name: <input type='text' class='form-control' name='Ingredients[" + ingredientIndex + "].IngredientName' /></div> <div class='col-sm'>Quantity: <input type='text' class='form-control' name='Ingredients[" + ingredientIndex +"].Quantity' /></div></div>");
             ingredientIndex++;
         }
     </script>
