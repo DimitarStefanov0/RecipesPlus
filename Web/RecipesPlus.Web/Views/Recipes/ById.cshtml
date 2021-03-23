@@ -28,6 +28,7 @@
     </div>
 </div>
 
+
 <hr />
 
 <div class="container">
@@ -60,6 +61,14 @@
                     }
                 }
             </ul>
+            <ul>
+                <li data-vote="1"><i class="far fa-star"></i></li>
+                <li data-vote="2"><i class="far fa-star"></i></li>
+                <li data-vote="3"><i class="far fa-star"></i></li>
+                <li data-vote="4"><i class="far fa-star"></i></li>
+                <li data-vote="5"><i class="far fa-star"></i></li>
+                <li><span id="averageVoteValue">@Model.AverageVote.ToString("0.0")</span></li>
+            </ul>
         </div>
         <div class="col-sm font-italic">
             <h4>НАЧИН НА ПРИГОТВЯНЕ:</h4>
@@ -67,3 +76,30 @@
         </div>
     </div>
 </div>
+
+<form method="post" id="antiForgeryForm"></form>
+
+@section Scripts {
+    <script>
+        $("li[data-vote]").each(function (el) {
+            $(this).click(function () {
+                var value = $(this).attr("data-vote");
+                var recipeId = @Model.Id;
+                var antiForgeryToken = $('#antiForgeryForm input[name=__RequestVerificationToken]').val();
+                var data = { recipeId: recipeId, value: value };
+                $.ajax({
+                    type: "POST",
+                    url: "/api/Votes",
+                    data: JSON.stringify(data),
+                    headers: {
+                        'X-CSRF-TOKEN': antiForgeryToken
+                    },
+                    success: function (data) {
+                        $('#averageVoteValue').html(data.averageVote.toFixed(1));
+                    },
+                    contentType: 'application/json',
+                });
+            })
+        });
+    </script>
+}

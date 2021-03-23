@@ -1,1 +1,1 @@
-# RecipesPlus
+<h1>Simple web application for recipes built with ASP.Net Core MVC</h1>

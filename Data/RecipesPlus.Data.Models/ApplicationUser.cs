@@ -17,6 +17,7 @@ namespace RecipesPlus.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Recipes = new HashSet<Recipe>();
             this.Images = new HashSet<Image>();
+            this.Votes = new HashSet<Vote>();
         }
 
         // Audit info
@@ -38,5 +39,7 @@ namespace RecipesPlus.Data.Models
         public virtual ICollection<Recipe> Recipes { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
+
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }
