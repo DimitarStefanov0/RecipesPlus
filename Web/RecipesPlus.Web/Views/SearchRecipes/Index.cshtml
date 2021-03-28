@@ -1,0 +1,17 @@
+﻿@model RecipesPlus.Web.ViewModels.SearchRecipes.SearchIndexViewModel
+@{
+    this.ViewData["Title"] = "Търси рецепти по избрани съставки";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+<form asp-action="List" method="get">
+    <div class="form-check">
+        @foreach (var ingredient in Model.Ingredients)
+        {
+            <input id="ingredient_@ingredient.Id" type="checkbox" name="Ingredients" value="@ingredient.Id" />
+            <label for="ingredient_@ingredient.Id">@ingredient.Name</label>
+        }
+    </div>
+    <button class="btn btn-primary">Търси</button>
+</form>
