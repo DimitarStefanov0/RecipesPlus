@@ -1,4 +1,5 @@
-﻿@model RecipesPlus.Web.ViewModels.Recipes.SingleRecipeViewModel
+﻿@using RecipesPlus.Common
+@model RecipesPlus.Web.ViewModels.Recipes.SingleRecipeViewModel
 @{
     this.ViewData["Title"] = Model.Name;
 }
@@ -76,6 +77,11 @@
         </div>
     </div>
 </div>
+
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info" >Редактирай</a>
+}
 
 <form method="post" id="antiForgeryForm"></form>
 

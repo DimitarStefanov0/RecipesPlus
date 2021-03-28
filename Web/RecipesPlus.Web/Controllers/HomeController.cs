@@ -10,10 +10,12 @@
     public class HomeController : BaseController
     {
         private readonly IGetCountsService countsService;
+        private readonly IRecipesService recipesService;
 
-        public HomeController(IGetCountsService countsService)
+        public HomeController(IGetCountsService countsService, IRecipesService recipesService)
         {
             this.countsService = countsService;
+            this.recipesService = recipesService;
         }
 
         public IActionResult Index()
@@ -25,6 +27,7 @@
                 CategoriesCount = countsDto.CategoriesCount,
                 IngredientsCount = countsDto.IngredientsCount,
                 ImagesCount = countsDto.ImagesCount,
+                RandomRecipes = this.recipesService.GetRandom<IndexPageRecipeViewModel>(10),
             };
 
             return this.View(viewModel);
