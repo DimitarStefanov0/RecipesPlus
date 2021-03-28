@@ -80,7 +80,12 @@
 
 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
 {
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info" >Редактирай</a>
+    <div class="row">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-info">Редактирай</a>
+        <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+            <button class="btn btn-danger">Изтрий</button>
+        </form>
+    </div>
 }
 
 <form method="post" id="antiForgeryForm"></form>
